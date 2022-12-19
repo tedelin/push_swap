@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/16 17:32:39 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/19 18:54:50 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	rrr(t_stack **a, t_stack **b);
 
 
 /* Utils functions */
-
-/* t_stack *last_stack(t_stack *a); */
-/* t_stack	*add_stack(t_stack *a, int content); */
-/* int	stack_size(t_stack *a); */
-/* void	print_stack(t_stack *s); */
+void	add_front(t_stack **stack, int content);
+void	print_stack(t_stack **a);
 
 #endif

@@ -6,22 +6,12 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 17:30:08 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/19 19:02:58 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdlib.h>
-#include <stdio.h>
-
-void	print_stack(t_stack **a)
-{
-	while ((*a))
-	{
-		printf("%d\n", (*a)->content);
-		(*a) = (*a)->next;
-	}
-}
 
 void	add_front(t_stack **stack, int content)
 {
@@ -32,38 +22,29 @@ void	add_front(t_stack **stack, int content)
 		return ;
 	elt->content = content;
 	elt->next = (*stack);
-	stack = &elt;
+	(*stack) = elt;
 }
-
 
 void	pa(t_stack **a, t_stack **b)
 {
+	t_stack	*tmp;
+
 	if (!(*b))
 		return ;
 	add_front(a, (*b)->content);
+	tmp = (*b);
+	(*b) = (*b)->next;
+	free(tmp);
 }
 
-
-
-
-
-/* void	pb(t_stack **a, t_stack **b) */
-/* { */
-/* } */
-
-
-
-
-int main(void)
+void	pb(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
+	t_stack	*tmp;
 
-	a = malloc(sizeof(t_stack));
-	a->content = 1;
-	/* a->next = malloc(sizeof(t_stack));; */
-	/* a->next->content = 2; */
-	/* a->next->next = NULL; */
-	add_front(&a, 2);
-	add_front(&a, 3);
-	print_stack(&a);
+	if (!(*a))
+		return ;
+	add_front(b, (*a)->content);
+	tmp = (*a);
+	(*a) = (*a)->next;
+	free(tmp);
 }
