@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 19:14:59 by tedelin          ###   ########.fr       */
+/*   Created: 2022/12/19 19:06:56 by tedelin           #+#    #+#             */
+/*   Updated: 2022/12/19 19:24:33 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdlib.h>
 
-void	pa(t_stack **a, t_stack **b)
+void	sa(t_stack **a)
 {
-	t_stack	*tmp;
+	int	tmp;
 
-	if (!(*b))
+	if (stack_size(a) < 2)
 		return ;
-	add_front(a, (*b)->content);
-	tmp = (*b);
-	(*b) = (*b)->next;
-	free(tmp);
+	tmp = (*a)->content;
+	(*a)->content = (*a)->next->content;
+	(*a)->next->content = tmp;
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	sb(t_stack **b)
 {
-	t_stack	*tmp;
+	int	tmp;
 
-	if (!(*a))
+	if (stack_size(b) < 2)
 		return ;
-	add_front(b, (*a)->content);
-	tmp = (*a);
-	(*a) = (*a)->next;
-	free(tmp);
+	tmp = (*b)->content;
+	(*b)->content = (*b)->next->content;
+	(*b)->next->content = tmp;
+}
+
+void	ss(t_stack **a, t_stack **b)
+{
+	sa(a);
+	sb(b);
 }

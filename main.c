@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 18:51:12 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 19:03:20 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/19 19:45:41 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@ void	print_stack(t_stack **a)
 		printf("%d\n", current->content);
 		current = current->next;
 	}
+}
 
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while ((*stack))
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)->next;
+		free(tmp);
+	}
 }
 
 int main(void)
@@ -48,9 +59,14 @@ int main(void)
 
 	pa(&a, &b);
 	pa(&a, &b);
+	sa(&a);
+
 
 	printf("stack a\n");
 	print_stack(&a);
 	printf("stack b\n");
 	print_stack(&b);
+
+	free_stack(&a);
+	free_stack(&b);
 }

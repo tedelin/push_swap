@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   moves_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 19:14:59 by tedelin          ###   ########.fr       */
+/*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
+/*   Updated: 2022/12/19 19:41:43 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdlib.h>
 
-void	pa(t_stack **a, t_stack **b)
+int	stack_size(t_stack **stack)
 {
-	t_stack	*tmp;
+	int	size;
+	t_stack	*current;
 
-	if (!(*b))
-		return ;
-	add_front(a, (*b)->content);
-	tmp = (*b);
-	(*b) = (*b)->next;
-	free(tmp);
+	if (!(*stack))
+		return (0);
+	size = 0;
+	current = (*stack);
+	while (current)
+	{
+		size++;
+		current = current->next;
+	}
+	return (free(current), size);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	add_front(t_stack **stack, int content)
 {
-	t_stack	*tmp;
+	t_stack	*elt;
 
-	if (!(*a))
+	elt = malloc(sizeof(t_stack));
+	if (!elt)
 		return ;
-	add_front(b, (*a)->content);
-	tmp = (*a);
-	(*a) = (*a)->next;
-	free(tmp);
+	elt->content = content;
+	elt->next = (*stack);
+	(*stack) = elt;
+	/* free(elt); */
 }
