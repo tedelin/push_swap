@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/20 17:35:40 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/20 18:43:10 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,41 @@
 #include <stddef.h>
 #include <stdio.h>
 
+int	check_int(char *s)
+{
+	int	len;
+
+	if (!s)
+		return (0);
+	len = ft_strlen(s);
+	if (s[0] == '-' && len > 11)
+		return (0);
+	if (s[0] == '-' && len == 11)
+	{
+		if (s[10] > '8')
+			return (0);
+		else
+			return (1);
+	}
+	if (s[0] == '+' && len > 11)
+		return (0);
+	if (s[0] == '+' && len == 11)
+	{
+		if (s[10] > '7')
+			return (0);
+	}
+	if ((len == 10 && s[9] > '7') || len > 10)
+		return (0);
+	return (1);
+}
+
 int	check_arg_numb(char *s)
 {
 	int	i;
 
 	i = 0;
+	if (s && (s[0] == '-' || s[0] == '+'))
+		i++;
 	while (s[i])
 	{
 		if (!(s[i] >= '0' && s[i] <= '9'))
@@ -88,7 +118,7 @@ int	main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
-			if (check_arg_numb(av[i]) == 0 || check_for_double(av, ac, i, av[i]) == 1)
+			if (check_arg_numb(av[i]) == 0 || check_for_double(av, ac, i, av[i]) == 1 || check_int(av[i]) == 0)
 			{
 				ft_putendl_fd("Error", 2);
 				return (0);
