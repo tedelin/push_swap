@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/20 18:43:10 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/21 16:29:40 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_arg_numb(char *s)
 
 int	check_for_double(char **av, int nb, int current, char *s)
 {
-	int	i;
+	int		i;
 	size_t	j;
 
 	i = 1;
@@ -75,7 +75,7 @@ int	check_for_double(char **av, int nb, int current, char *s)
 			while (av[i][j] && s[j])
 			{
 				if (av[i][j] != s[j])
-					break;
+					break ;
 				j++;
 			}
 			if (j == ft_strlen(av[i]) && ft_strlen(s) == j)
@@ -110,15 +110,15 @@ void	print_stack(t_stack **a)
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
+	int		i;
 
 	if (ac >= 2)
 	{
-		int	i;
-
 		i = 1;
 		while (i < ac)
 		{
-			if (check_arg_numb(av[i]) == 0 || check_for_double(av, ac, i, av[i]) == 1 || check_int(av[i]) == 0)
+			if (!(check_arg_numb(av[i])) || check_for_double(av, ac, i, av[i])
+				|| !(check_int(av[i])))
 			{
 				ft_putendl_fd("Error", 2);
 				return (0);

@@ -6,16 +6,16 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/20 17:24:41 by tedelin          ###   ########.fr       */
+/*   Updated: 2022/12/21 16:32:40 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	int	content;
+	int				content;
 	struct s_stack	*previous;
 	struct s_stack	*next;
 }		t_stack;
