@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:06:56 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 19:24:33 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:39 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sa(t_stack **a)
 	tmp = (*a)->content;
 	(*a)->content = (*a)->next->content;
 	(*a)->next->content = tmp;
+	write (1, "sa\n", 3);
 }
 
 void	sb(t_stack **b)

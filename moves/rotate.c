@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:20:09 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/21 16:25:39 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:40:25 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ra(t_stack **a)
 		current->content = tmp;
 		tmp = current->content;
 	}
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **b)

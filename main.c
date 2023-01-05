@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/21 16:29:40 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/05 20:02:51 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,11 @@ void	print_stack(t_stack **a)
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
+	t_stack	*b;
 	int		i;
 
+	stack = NULL;
+	b = NULL;
 	if (ac >= 2)
 	{
 		i = 1;
@@ -126,7 +129,17 @@ int	main(int ac, char **av)
 			i++;
 		}
 		build_stack(&stack, ac, av);
+		/* int	*tab_liss = build_lis(build_tab(&stack), lis_tab(build_tab(&stack), stack_size(&stack)), stack_size(&stack)); */
+		/* int	i = 0; */
+		/* while (i < 6) */
+		/* 	printf("%d\n", tab_liss[i++]); */
+		/* printf("check lis test : %d\n", check_lis(tab_liss, get_lis_max(build_tab(&stack), stack_size(&stack), 1), stack->content)); */
+		/* printf("check lis test : %d\n", check_full_lis(&stack, tab_liss, stack_size(&stack))); */
+		first_sort(&stack, &b);
+		/* ft_three_elt(&stack); */
 		print_stack(&stack);
+		printf("SEPARATION\n");
+		print_stack(&b);
 	}
 	else
 		ft_putendl_fd("Error", 2);

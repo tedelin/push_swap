@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/21 16:25:07 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/05 19:22:03 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ void	add_front(t_stack **stack, int content)
 
 	if (!(*stack))
 	{
-		stack = malloc(sizeof(t_stack));
-		if (!(*stack))
+		elt = malloc(sizeof(t_stack));
+		if (!elt)
 			return ;
-		(*stack)->content = content;
-		(*stack)->next = NULL;
+		elt->content = content;
+		elt->next = NULL;
+		(*stack) = elt;
 		return ;
 	}
 	elt = malloc(sizeof(t_stack));
@@ -56,7 +57,7 @@ void	add_back(t_stack **stack, int content)
 	t_stack	*elt;
 	t_stack	*last;
 
-	if (!*stack)
+	if (!(*stack))
 	{
 		elt = malloc(sizeof(t_stack));
 		if (!elt)
