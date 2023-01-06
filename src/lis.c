@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:33:22 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/05 19:12:45 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 17:17:48 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	*init_lis(int *tab, int len)
+int	*init_lis(int len)
 {
 	int	i;
 	int	*lis_tab;
@@ -34,7 +34,7 @@ int	*lis_tab(int *tab, int len)
 	int	j;
 	int	*lis_tab;
 
-	lis_tab = init_lis(tab, len);
+	lis_tab = init_lis(len);
 	i = 1;
 	while (i < len)
 	{
@@ -70,8 +70,7 @@ int	get_lis_max(int *tab, int len, int choice)
 	}
 	if (choice == 0)
 		return (ind);
-	else if (choice == 1)
-		return (max);
+	return (max);
 }
 
 int	*build_lis(int *tab, int *lis_tab, int len)
@@ -98,45 +97,3 @@ int	*build_lis(int *tab, int *lis_tab, int len)
 	}
 	return (lis);
 }
-
-int	check_lis(int *lis, int len, int elt)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (lis[i] == elt)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_full_lis(t_stack **stack, int *lis, int len)
-{
-	t_stack	*tmp;
-
-	tmp = (*stack);
-	while (tmp)
-	{
-		if (check_lis(lis, len, tmp->content) == 0)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-/* int	main(void) */
-/* { */
-/* 	/1* int	tab[8] = {10, 22, 9, 33, 21, 50, 41, 60}; *1/ */
-/* 	/1* int	tab[10] = {0, 4, 6, 1, 2, 10, 7, 3, 8, 9}; *1/ */
-/* 	/1* int	tab[7] = {3, 4, -1, 0, 6, 2, 3}; *1/ */
-/* 	int	tab[16] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15}; */
-/* 	int *lis = build_lis(tab, lis_tab(tab, 16), 16); */
-/* 	/1* int max = lis_max(tab, 8); *1/ */
-
-/* 	int	i = 0; */
-/* 	while (i < 6) */
-/* 		printf("%d, ", lis[i++]); */
-/* } */

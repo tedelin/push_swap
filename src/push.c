@@ -6,11 +6,11 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2022/12/19 19:14:59 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
 void	pa(t_stack **a, t_stack **b)
@@ -23,6 +23,7 @@ void	pa(t_stack **a, t_stack **b)
 	tmp = (*b);
 	(*b) = (*b)->next;
 	free(tmp);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -35,4 +36,5 @@ void	pb(t_stack **a, t_stack **b)
 	tmp = (*a);
 	(*a) = (*a)->next;
 	free(tmp);
+	write(1, "pb\n", 3);
 }

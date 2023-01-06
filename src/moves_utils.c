@@ -6,11 +6,11 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/05 19:22:03 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
 int	stack_size(t_stack **stack)

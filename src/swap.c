@@ -6,11 +6,11 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:06:56 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/04 17:41:39 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	sa(t_stack **a)
 {
@@ -33,6 +33,7 @@ void	sb(t_stack **b)
 	tmp = (*b)->content;
 	(*b)->content = (*b)->next->content;
 	(*b)->next->content = tmp;
+	write (1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)

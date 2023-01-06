@@ -6,11 +6,11 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/05 20:02:51 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 17:18:16 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include "push_swap.h"
 #include <stddef.h>
 #include <stdio.h>
@@ -107,6 +107,18 @@ void	print_stack(t_stack **a)
 	}
 }
 
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while ((*stack))
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)->next;
+		free(tmp);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
@@ -122,24 +134,13 @@ int	main(int ac, char **av)
 		{
 			if (!(check_arg_numb(av[i])) || check_for_double(av, ac, i, av[i])
 				|| !(check_int(av[i])))
-			{
-				ft_putendl_fd("Error", 2);
-				return (0);
-			}
+				return (ft_putendl_fd("Error", 2), 0);
 			i++;
 		}
 		build_stack(&stack, ac, av);
-		/* int	*tab_liss = build_lis(build_tab(&stack), lis_tab(build_tab(&stack), stack_size(&stack)), stack_size(&stack)); */
-		/* int	i = 0; */
-		/* while (i < 6) */
-		/* 	printf("%d\n", tab_liss[i++]); */
-		/* printf("check lis test : %d\n", check_lis(tab_liss, get_lis_max(build_tab(&stack), stack_size(&stack), 1), stack->content)); */
-		/* printf("check lis test : %d\n", check_full_lis(&stack, tab_liss, stack_size(&stack))); */
 		first_sort(&stack, &b);
-		/* ft_three_elt(&stack); */
-		print_stack(&stack);
-		printf("SEPARATION\n");
-		print_stack(&b);
+		free_stack(&stack);
+		free_stack(&b);
 	}
 	else
 		ft_putendl_fd("Error", 2);

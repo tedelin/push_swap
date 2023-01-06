@@ -6,30 +6,42 @@
 #    By: tedelin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 16:29:25 by tedelin           #+#    #+#              #
-#    Updated: 2022/12/21 19:47:45 by tedelin          ###   ########.fr        #
+#    Updated: 2023/01/06 17:56:36 by tedelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-MOVES_DIR = moves
-SRCS = $(addprefix $(MOVES_DIR)/, push.c swap.c moves_utils.c rotate.c reverse_rotate.c) main.c
-OBJS = push.o swap.o moves_utils.o rotate.o reverse_rotate.o main.o
-LIBFT = libft/libft.a
+HEADER_FILE = src/push_swap.h
+SRC_DIR = src
+OBJ_DIR = obj
+SRC = $(addprefix $(SRC_DIR)/, 3_5.c lis.c main.c moves_utils.c push.c reverse_rotate.c rotate.c sort.c swap.c)
+OBJS = $(addprefix $(OBJ_DIR)/, 3_5.o lis.o main.o moves_utils.o push.o reverse_rotate.o rotate.o sort.o swap.o)
+
+LIBFT_DIR = libft
+LIBFT_LIB = libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) push_swap.h
-	$(CC) $(FLAGS) -c $(SRCS)
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT)
+$(LIBFT_LIB):
+	make -C $(LIBFT_DIR)
+
+$(NAME): $(OBJS) $(LIBFT_LIB)
+	$(CC) $(FLAGS) -o $@ $^
+
+obj/%.o: src/%.c $(HEADER_FILE)
+	@mkdir -p $(dir $@)
+	$(CC) -c $(FLAGS) -o $@ $<
 
 clean:
+	make -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
+	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft

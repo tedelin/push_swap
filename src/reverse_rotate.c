@@ -6,11 +6,11 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:55:20 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/04 17:41:14 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
 void	rra(t_stack **a)
@@ -50,6 +50,7 @@ void	rrb(t_stack **b)
 		next_last->next = NULL;
 		free(last);
 	}
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
