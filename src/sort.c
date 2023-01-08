@@ -6,32 +6,13 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/08 17:46:29 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-int	*build_tab(t_stack **stack)
-{
-	int		*tab;
-	t_stack	*cur;
-	int		i;
-
-	tab = malloc(sizeof(int) * stack_size(stack));
-	if (!tab)
-		return (NULL);
-	cur = (*stack);
-	i = 0;
-	while (cur)
-	{
-		tab[i++] = cur->content;
-		cur = cur->next;
-	}
-	return (tab);
-}
 
 int	check_lis(int *lis, int len, int elt)
 {
@@ -61,7 +42,7 @@ int	check_full_lis(t_stack **stack, int *lis, int len)
 	return (1);
 }
 
-void	check_top(t_stack **stack, int lis_len, int min_val)
+void	final_sort(t_stack **stack, int size, int min_val)
 {
 	t_stack	*cur;
 	int		i_min;
@@ -75,12 +56,12 @@ void	check_top(t_stack **stack, int lis_len, int min_val)
 		cur = cur->next;
 		i_min++;
 	}
-	if (i_min <= lis_len / 2)
+	if (i_min <= size / 2)
 	{
 		while ((*stack)->content != min_val)
 			ra(stack);
 	}
-	else if (i_min > lis_len / 2)
+	else if (i_min > size / 2)
 	{
 		while ((*stack)->content != min_val)
 			rra(stack);
@@ -109,8 +90,20 @@ void	first_sort(t_stack **a, t_stack **b)
 		else
 			ra(a);
 	}
-	check_top(a, lis_max, lis[0]);
 	free(tab);
 	free(tab_lis);
 	free(lis);
+}
+
+void	main_sort(t_stack **a, t_stack **b)
+{
+	int	*best_move;
+
+	first_sort(a, b);
+	while (stack_size(b) != 0)
+	{
+		best_move = best_to_push(a, b);
+		best_exec(a, b, best_move);
+	}
+	final_sort(a, stack_size(a), get_min_stack(a));
 }

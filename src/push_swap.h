@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 17:16:20 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/08 18:23:30 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,22 @@ void	rrr(t_stack **a, t_stack **b);
 void	add_front(t_stack **stack, int content);
 void	add_back(t_stack **stack, int content);
 int		stack_size(t_stack **stack);
+int		*build_tab(t_stack **stack);
+int		get_min_stack(t_stack **stack);
+int		ft_abs(int nb);
 
 /* Sorts functions */
 void	ft_three_elt(t_stack **stack);
 void	ft_five_elt(t_stack **a, t_stack **b);
 void	first_sort(t_stack **a, t_stack **b);
-int		*build_tab(t_stack **stack);
+void	main_sort(t_stack **a, t_stack **b);
+
+int		cost_a(t_stack **a, int elt);
+int		cost_b(t_stack **a, int elt);
+int		cost_max(t_stack **stack);
+int		*best_to_push(t_stack **a, t_stack **b);
+void	best_exec(t_stack **a, t_stack **b, int *tab);
+void	final_sort(t_stack **stack, int size, int min_val);
 
 /* Lis functions */
 int		*init_lis(int len);

@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 17:18:16 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/08 17:56:45 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,8 @@ int	main(int ac, char **av)
 			i++;
 		}
 		build_stack(&stack, ac, av);
-		first_sort(&stack, &b);
+		/* first_sort(&stack, &b); */
+		main_sort(&stack, &b);
 		free_stack(&stack);
 		free_stack(&b);
 	}
