@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/08 17:46:29 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:37:59 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	final_sort(t_stack **stack, int size, int min_val)
 	if (i_min <= size / 2)
 	{
 		while ((*stack)->content != min_val)
-			ra(stack);
+			ra(stack, 1);
 	}
 	else if (i_min > size / 2)
 	{
 		while ((*stack)->content != min_val)
-			rra(stack);
+			rra(stack, 1);
 	}
 }
 
@@ -88,7 +88,7 @@ void	first_sort(t_stack **a, t_stack **b)
 		else if (check_lis(lis, lis_max, (*a)->content) == 0)
 			pb(a, b);
 		else
-			ra(a);
+			ra(a, 1);
 	}
 	free(tab);
 	free(tab_lis);

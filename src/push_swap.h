@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 16:07:21 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:35:36 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	pb(t_stack **a, t_stack **b);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
+void	ra(t_stack **a, int display);
+void	rb(t_stack **b, int display);
 void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
+void	rra(t_stack **a, int display);
+void	rrb(t_stack **b, int display);
 void	rrr(t_stack **a, t_stack **b);
 
 /* Utils functions */
@@ -39,6 +39,7 @@ int		stack_size(t_stack **stack);
 int		*build_tab(t_stack **stack);
 int		get_min_stack(t_stack **stack);
 int		ft_abs(int nb);
+void	free_stack(t_stack **stack);
 
 /* Sorts functions */
 void	ft_three_elt(t_stack **stack);
@@ -60,9 +61,5 @@ int		get_lis_max(int *tab, int len, int choice);
 int		*build_lis(int *tab, int *lis_tab, int len);
 int		check_lis(int *lis, int len, int elt);
 int		check_full_lis(t_stack **stack, int *lis, int len);
-
-/* Testing functions remove later */
-void	print_stack(t_stack **a);
-void	free_stack(t_stack **stack);
 
 #endif

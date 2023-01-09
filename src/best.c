@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 17:59:44 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:36:04 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,33 @@ int	*best_to_push(t_stack **a, t_stack **b)
 	return (best);
 }
 
+/* void	smart_moves(t_stack **a, t_stack **b, int *tab) */
+/* { */
+/* 	if (tab[0] * tab[1] > 0) */
+/* 	{ */
+/* 	} */
+/* } */
+
 void	best_exec(t_stack **a, t_stack **b, int *tab)
 {
 	while (tab[0] > 0)
 	{
-		ra(a);
+		ra(a, 1);
 		tab[0] = tab[0] - 1;
 	}
 	while (tab[0] < 0)
 	{
-		rra(a);
+		rra(a, 1);
 		tab[0] = tab[0] + 1;
 	}
 	while (tab[1] > 1)
 	{
-		rb(b);
+		rb(b, 1);
 		tab[1] = tab[1] - 1;
 	}
 	while (tab[1] < -1)
 	{
-		rrb(b);
+		rrb(b, 1);
 		tab[1] = tab[1] + 1;
 	}
 	pa(a, b);

@@ -6,14 +6,14 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:55:20 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 15:54:13 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:35:02 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, int display)
 {
 	t_stack	*last;
 	t_stack	*next_last;
@@ -30,10 +30,11 @@ void	rra(t_stack **a)
 		next_last->next = NULL;
 		free(last);
 	}
-	write(1, "rra\n", 4);
+	if (display == 1)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, int display)
 {
 	t_stack	*last;
 	t_stack	*next_last;
@@ -50,11 +51,13 @@ void	rrb(t_stack **b)
 		next_last->next = NULL;
 		free(last);
 	}
-	write(1, "rrb\n", 4);
+	if (display == 1)
+		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	rra(a);
-	rrb(b);
+	rra(a, 0);
+	rrb(b, 0);
+	write(1, "rrr", 3);
 }

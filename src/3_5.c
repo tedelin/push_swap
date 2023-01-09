@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:11:58 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:37:15 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ void	ft_three_elt(t_stack **stack)
 		&& cur->next->content > cur->next->next->content)
 	{
 		sa(stack);
-		rra(stack);
+		rra(stack, 1);
 	}
 	else if (cur->content < cur->next->content
 		&& cur->content < cur->next->next->content)
 	{
 		sa(stack);
-		ra(stack);
+		ra(stack, 1);
 	}
 	else if (cur->content > cur->next->content
 		&& cur->content > cur->next->next->content)
-		ra(stack);
+		ra(stack, 1);
 	else if (cur->content > cur->next->content)
 		sa(stack);
 	else if (cur->next->next->content < cur->next->content)
-		rra(stack);
+		rra(stack, 1);
 }
 
 void	ft_five_elt(t_stack **a, t_stack **b)
