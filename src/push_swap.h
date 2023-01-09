@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/08 18:23:30 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:07:21 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 typedef struct s_stack
 {
 	int				content;
-	struct s_stack	*previous;
 	struct s_stack	*next;
 }		t_stack;
 

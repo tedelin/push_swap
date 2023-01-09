@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:45:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/08 18:24:07 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:00:54 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	*build_tab(t_stack **stack)
 
 int	get_min_stack(t_stack **stack)
 {
-	int	min;
-	t_stack *cur;
+	int		min;
+	t_stack	*cur;
 
 	cur = (*stack);
 	min = cur->content;
@@ -50,14 +50,15 @@ int	get_min_stack(t_stack **stack)
 
 int	cost_max(t_stack **stack)
 {
-	int	max;
-	int	i;
-	int	pos;
-	t_stack *cur;
+	int		max;
+	int		i;
+	int		pos;
+	t_stack	*cur;
 
 	cur = (*stack);
 	max = cur->content;
 	i = 0;
+	pos = 0;
 	while (cur)
 	{
 		if (cur->content > max)
@@ -68,14 +69,14 @@ int	cost_max(t_stack **stack)
 		cur = cur->next;
 		i++;
 	}
-	if (pos <= stack_size(stack))
-		return (pos);
-	return ((stack_size(stack) - pos) * (- 1));
+	if (pos < stack_size(stack))
+		return (pos + 1);
+	return ((stack_size(stack) - pos) * (-1));
 }
 
 int	ft_abs(int nb)
 {
 	if (nb < 0)
-		return (-nb);
+		return (nb * (-1));
 	return (nb);
 }
