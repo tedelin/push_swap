@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:11:58 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 18:07:03 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 19:38:29 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_three_sort(t_stack **stack)
 
 void	ft_five_sort(t_stack **a, t_stack **b)
 {
-
 	if (is_sorted(a))
 		return ;
 	pb(a, b);

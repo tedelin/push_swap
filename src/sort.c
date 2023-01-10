@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 16:15:44 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 19:49:55 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	next_elt_b(t_stack **a, t_stack **b, int *lis, int lis_max)
 	tab = build_tab(a);
 	size = stack_size(a);
 	i = 0;
-	best = size / 2;
+	best = (size - 1) / 2;
 	while (i < size / 2)
 	{
 		if (check_lis(lis, lis_max, tab[i]) == 0 && i < best)
@@ -118,12 +118,12 @@ void	first_sort(t_stack **a, t_stack **b)
 	{
 		if (check_full_lis(a, lis, lis_max) == 1)
 			break ;
-		/* else */
-		/* 	next_elt_b(a, b, lis, lis_max); */
-		else if (check_lis(lis, lis_max, (*a)->content) == 0)
-			pb(a, b);
 		else
-			ra(a, 1);
+			next_elt_b(a, b, lis, lis_max);
+		/* else if (check_lis(lis, lis_max, (*a)->content) == 0) */
+		/* 	pb(a, b); */
+		/* else */
+		/* 	ra(a, 1); */
 	}
 	free(tab);
 	free(tab_lis);

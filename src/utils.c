@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:45:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 18:29:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 19:47:59 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ int	ft_abs(int nb)
 	return (nb);
 }
 
-long int	ft_atoi_long(char *s)
+long int	ft_atoi_long(char *nptr)
 {
 	long int	res;
-	int	sign;
+	int			sign;
 
 	res = 0;
 	sign = 1;

@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 16:30:42 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 19:47:36 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		*build_tab(t_stack **stack);
 int		get_min_stack(t_stack **stack);
 int		ft_abs(int nb);
 void	free_stack(t_stack **stack);
+long int	ft_atoi_long(char *nptr);
 
 /* Sorts functions */
 void	ft_three_sort(t_stack **stack);
