@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:35:36 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 16:30:42 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_stack
 
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-void	sa(t_stack **a);
-void	sb(t_stack **b);
+void	sa(t_stack **a, int display);
+void	sb(t_stack **b, int display);
 void	ss(t_stack **a, t_stack **b);
 void	ra(t_stack **a, int display);
 void	rb(t_stack **b, int display);
@@ -42,8 +42,8 @@ int		ft_abs(int nb);
 void	free_stack(t_stack **stack);
 
 /* Sorts functions */
-void	ft_three_elt(t_stack **stack);
-void	ft_five_elt(t_stack **a, t_stack **b);
+void	ft_three_sort(t_stack **stack);
+void	ft_five_sort(t_stack **a, t_stack **b);
 void	first_sort(t_stack **a, t_stack **b);
 void	main_sort(t_stack **a, t_stack **b);
 

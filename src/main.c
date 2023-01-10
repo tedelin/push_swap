@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:05:02 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:31:20 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void	free_stack(t_stack **stack)
 
 int	main(int ac, char **av)
 {
-	t_stack	*stack;
+	t_stack	*a;
 	t_stack	*b;
 	int		i;
 
-	stack = NULL;
+	a = NULL;
 	b = NULL;
 	if (ac >= 2)
 	{
@@ -91,13 +91,19 @@ int	main(int ac, char **av)
 		while (i < ac)
 		{
 			if (!(check_arg_numb(av[i]))
-				|| check_for_double(av, ac, i, av[i]))
+				|| check_for_double(av, ac, i, av[i])
+				|| ft_atoi_long(av[i]) > 2147483647 || ft_atoi_long(av[i]) < -2147483648)
 				return (ft_putendl_fd("Error", 2), 0);
 			i++;
 		}
-		build_stack(&stack, ac, av);
-		main_sort(&stack, &b);
-		free_stack(&stack);
+		build_stack(&a, ac, av);
+		if (stack_size(&a) == 3)
+			ft_three_sort(&a);
+		else if (stack_size(&a) == 5)
+			ft_five_sort(&a, &b);
+		else
+			main_sort(&a, &b);
+		free_stack(&a);
 		free_stack(&b);
 	}
 	else

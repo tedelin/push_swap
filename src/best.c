@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 14:50:43 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 17:39:03 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	cost_b(t_stack **b, int elt)
 		cur = cur->next;
 		pos++;
 	}
-	if (pos < size / 2)
+	if (pos <= size / 2)
 		return (pos);
 	return ((size - pos) * (-1));
 }

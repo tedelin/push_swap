@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 14:50:57 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 16:15:44 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,39 @@ void	final_sort(t_stack **stack, int size, int min_val)
 	}
 }
 
+void	next_elt_b(t_stack **a, t_stack **b, int *lis, int lis_max)
+{
+	int	best;
+	int	i;
+	int	size;
+	int	*tab;
+	int	*op;
+
+	tab = build_tab(a);
+	size = stack_size(a);
+	i = 0;
+	best = size / 2;
+	while (i < size / 2)
+	{
+		if (check_lis(lis, lis_max, tab[i]) == 0 && i < best)
+			best = i;
+		i++;
+	}
+	i = size - 1;
+	while (i >= size / 2)
+	{
+		if (check_lis(lis, lis_max, tab[i]) == 0 && size - i < best)
+			best = (size - i) * (-1);
+		i--;
+	}
+	op = malloc(sizeof(int) * 2);
+	op[0] = best;
+	op[1] = 0;
+	best_exec(a, b, op);
+	pb(a, b);
+	free(tab);
+}
+
 void	first_sort(t_stack **a, t_stack **b)
 {
 	int	*tab;
@@ -85,6 +118,8 @@ void	first_sort(t_stack **a, t_stack **b)
 	{
 		if (check_full_lis(a, lis, lis_max) == 1)
 			break ;
+		/* else */
+		/* 	next_elt_b(a, b, lis, lis_max); */
 		else if (check_lis(lis, lis_max, (*a)->content) == 0)
 			pb(a, b);
 		else

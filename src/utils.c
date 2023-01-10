@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:45:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:00:54 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:29:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ int	cost_max(t_stack **stack)
 		cur = cur->next;
 		i++;
 	}
-	if (pos < stack_size(stack))
+	if (pos < stack_size(stack) / 2)
 		return (pos + 1);
-	return ((stack_size(stack) - pos) * (-1));
+	return ((stack_size(stack) - pos - 1) * (-1));
 }
 
 int	ft_abs(int nb)
@@ -79,4 +79,25 @@ int	ft_abs(int nb)
 	if (nb < 0)
 		return (nb * (-1));
 	return (nb);
+}
+
+long int	ft_atoi_long(char *s)
+{
+	long int	res;
+	int	sign;
+
+	res = 0;
+	sign = 1;
+	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r') || *nptr == '\n')
+		nptr++;
+	if (*nptr == '-')
+		sign = -sign;
+	if (*nptr == '+' || *nptr == '-')
+		nptr++;
+	while (*nptr && *nptr >= '0' && *nptr <= '9')
+	{
+		res = (res * 10) + (*nptr - '0');
+		nptr++;
+	}
+	return (res * sign);
 }
