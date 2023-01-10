@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:37:59 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:50:57 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	main_sort(t_stack **a, t_stack **b)
 	{
 		best_move = best_to_push(a, b);
 		best_exec(a, b, best_move);
+		pa(a, b);
 	}
 	final_sort(a, stack_size(a), get_min_stack(a));
 }

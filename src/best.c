@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:36:04 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:50:43 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	cost_b(t_stack **b, int elt)
 		pos++;
 	}
 	if (pos < size / 2)
-		return (pos + 1);
-	return ((size - pos + 1) * (-1));
+		return (pos);
+	return ((size - pos) * (-1));
 }
 
 int	*best_to_push(t_stack **a, t_stack **b)
@@ -83,15 +83,28 @@ int	*best_to_push(t_stack **a, t_stack **b)
 	return (best);
 }
 
-/* void	smart_moves(t_stack **a, t_stack **b, int *tab) */
-/* { */
-/* 	if (tab[0] * tab[1] > 0) */
-/* 	{ */
-/* 	} */
-/* } */
+void	smart_moves(t_stack **a, t_stack **b, int *tab)
+{
+	if (tab[0] * tab[1] > 0)
+	{
+		while (tab[0] > 0 && tab[1] > 0)
+		{
+			rr(a, b);
+			tab[0] = tab[0] - 1;
+			tab[1] = tab[1] - 1;
+		}
+		while (tab[0] < 0 && tab[1] < 0)
+		{
+			rrr(a, b);
+			tab[0] = tab[0] + 1;
+			tab[1] = tab[1] + 1;
+		}
+	}
+}
 
 void	best_exec(t_stack **a, t_stack **b, int *tab)
 {
+	smart_moves(a, b, tab);
 	while (tab[0] > 0)
 	{
 		ra(a, 1);
@@ -102,15 +115,14 @@ void	best_exec(t_stack **a, t_stack **b, int *tab)
 		rra(a, 1);
 		tab[0] = tab[0] + 1;
 	}
-	while (tab[1] > 1)
+	while (tab[1] > 0)
 	{
 		rb(b, 1);
 		tab[1] = tab[1] - 1;
 	}
-	while (tab[1] < -1)
+	while (tab[1] < 0)
 	{
 		rrb(b, 1);
 		tab[1] = tab[1] + 1;
 	}
-	pa(a, b);
 }
