@@ -6,13 +6,12 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 17:39:03 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:06:13 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int	cost_a(t_stack **a, int elt)
 {
@@ -25,13 +24,13 @@ int	cost_a(t_stack **a, int elt)
 	tab = build_tab(a);
 	if (tab[j] < elt && elt < tab[0])
 		return (0);
-	while (i < stack_size(a) / 2)
+	while (i <= stack_size(a) / 2)
 	{
 		if (tab[i] < elt && elt < tab[i + 1])
 			return (free(tab), i + 1);
 		i++;
 	}
-	while (j >= stack_size(a) / 2)
+	while (j > stack_size(a) / 2)
 	{
 		if (tab[j] > elt && elt > tab[j - 1])
 			return (free(tab), (stack_size(a) - j) * (-1));

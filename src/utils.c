@@ -6,12 +6,13 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:45:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 19:47:59 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:44:16 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int	*build_tab(t_stack **stack)
 {
@@ -35,15 +36,18 @@ int	*build_tab(t_stack **stack)
 int	get_min_stack(t_stack **stack)
 {
 	int		min;
+	int		i;
 	t_stack	*cur;
 
 	cur = (*stack);
 	min = cur->content;
+	i = 0;
 	while (cur)
 	{
 		if (cur->content < min)
 			min = cur->content;
 		cur = cur->next;
+		i++;
 	}
 	return (min);
 }

@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 18:31:20 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:46:11 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ int	main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
-			if (!(check_arg_numb(av[i]))
-				|| check_for_double(av, ac, i, av[i])
-				|| ft_atoi_long(av[i]) > 2147483647 || ft_atoi_long(av[i]) < -2147483648)
+			if (!(check_arg_numb(av[i])) || check_for_double(av, ac, i, av[i])
+				|| ft_atoi_long(av[i]) > 2147483647
+				|| ft_atoi_long(av[i]) < -2147483648)
 				return (ft_putendl_fd("Error", 2), 0);
 			i++;
 		}
@@ -106,6 +106,4 @@ int	main(int ac, char **av)
 		free_stack(&a);
 		free_stack(&b);
 	}
-	else
-		ft_putendl_fd("Error", 2);
 }
