@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_utils.c                                      :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/12 16:59:44 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 int	stack_size(t_stack **stack)
@@ -76,4 +77,25 @@ void	add_back(t_stack **stack, int content)
 	while (last && last->next)
 		last = last->next;
 	last->next = elt;
+}
+
+void	build_stack(t_stack **stack, int nb, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < nb)
+		add_back(stack, ft_atoi(av[i++]));
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while ((*stack))
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)->next;
+		free(tmp);
+	}
 }

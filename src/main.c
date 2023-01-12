@@ -6,76 +6,12 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:49:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/11 19:46:11 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/12 16:52:35 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "push_swap.h"
-
-int	check_arg_numb(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (s && (s[0] == '-' || s[0] == '+'))
-		i++;
-	while (s[i])
-	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_for_double(char **av, int nb, int current, char *s)
-{
-	int		i;
-	size_t	j;
-
-	i = 1;
-	while (i < nb)
-	{
-		if (i == current)
-			i++;
-		else
-		{
-			j = 0;
-			while (av[i][j] && s[j])
-			{
-				if (av[i][j] != s[j])
-					break ;
-				j++;
-			}
-			if (j == ft_strlen(av[i]) && ft_strlen(s) == j)
-				return (1);
-			i++;
-		}
-	}
-	return (0);
-}
-
-void	build_stack(t_stack **stack, int nb, char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i < nb)
-		add_back(stack, ft_atoi(av[i++]));
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	while ((*stack))
-	{
-		tmp = (*stack);
-		(*stack) = (*stack)->next;
-		free(tmp);
-	}
-}
 
 int	main(int ac, char **av)
 {
@@ -96,14 +32,6 @@ int	main(int ac, char **av)
 				return (ft_putendl_fd("Error", 2), 0);
 			i++;
 		}
-		build_stack(&a, ac, av);
-		if (stack_size(&a) == 3)
-			ft_three_sort(&a);
-		else if (stack_size(&a) == 5)
-			ft_five_sort(&a, &b);
-		else
-			main_sort(&a, &b);
-		free_stack(&a);
-		free_stack(&b);
+		sort_choose(&a, &b, ac, av);
 	}
 }
