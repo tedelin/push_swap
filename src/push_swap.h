@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/12 16:58:40 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/12 17:25:44 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,10 @@ int			*best_to_push(t_stack **a, t_stack **b);
 void		best_exec(t_stack **a, t_stack **b, int *tab);
 void		final_sort(t_stack **stack, int size, int min_val);
 
-
 /* Check arguments functions */
-int	check_arg_numb(char *s);
-int	check_for_double(char **av, int nb, int current, char *s);
-void	sort_choose(t_stack **a, t_stack **b, int ac, char **av);
+int			check_arg_numb(char *s);
+int			check_for_double(char **av, int nb, int current, char *s);
+void		sort_choose(t_stack **a, t_stack **b, int ac, char **av);
 
 /* Lis functions */
 int			*init_lis(int len);
