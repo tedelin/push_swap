@@ -6,12 +6,13 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/06 16:54:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/13 16:51:13 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 void	pa(t_stack **a, t_stack **b)
 {

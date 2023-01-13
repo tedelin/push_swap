@@ -6,11 +6,12 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:20:09 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 13:54:48 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/13 16:51:42 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 void	ra(t_stack **a, int display)
 {
