@@ -27,6 +27,8 @@ int	check_arg_numb(char *s)
 			return (0);
 		i++;
 	}
+	if (i == 1 && (s[0] == '-' || s[0] == '+'))
+		return (0);
 	return (1);
 }
 
