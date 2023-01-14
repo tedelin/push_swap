@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:13 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:25:47 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	pa(t_stack **a, t_stack **b)
 
 	if (!(*b))
 		return ;
-	add_front(a, (*b)->content);
-	tmp = (*b);
-	(*b) = (*b)->next;
-	free(tmp);
-	write(1, "pa\n", 3);
+	if (add_front(a, (*b)->content))
+	{
+		tmp = (*b);
+		(*b) = (*b)->next;
+		free(tmp);
+		write(1, "pa\n", 3);
+	}
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -33,9 +35,11 @@ void	pb(t_stack **a, t_stack **b)
 
 	if (!(*a))
 		return ;
-	add_front(b, (*a)->content);
-	tmp = (*a);
-	(*a) = (*a)->next;
-	free(tmp);
-	write(1, "pb\n", 3);
+	if (add_front(b, (*a)->content))
+	{
+		tmp = (*a);
+		(*a) = (*a)->next;
+		free(tmp);
+		write(1, "pb\n", 3);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 17:05:56 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:58:24 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	*best_to_push(t_stack **a, t_stack **b)
 	int		tmp[2];
 	t_stack	*cur;
 
+	if (!(*b))
+		return (NULL);
 	best = malloc(sizeof(int) * 2);
 	if (!best)
 		return (NULL);

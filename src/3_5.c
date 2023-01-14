@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:11:58 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 16:24:11 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:08:09 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,21 @@ void	ft_three_sort(t_stack **stack)
 
 void	ft_five_sort(t_stack **a, t_stack **b)
 {
+	int	*best_move;
+
 	if (is_sorted(a))
 		return ;
 	pb(a, b);
 	pb(a, b);
 	ft_three_sort(a);
-	best_exec(a, b, best_to_push(a, b));
-	pa(a, b);
-	best_exec(a, b, best_to_push(a, b));
-	pa(a, b);
+	while (stack_size(b) != 0)
+	{
+		best_move = best_to_push(a, b);
+		if (!best_move)
+			return ;
+		best_exec(a, b, best_move);
+		pa(a, b);
+		free(best_move);
+	}
 	final_sort(a, stack_size(a), get_min_stack(a));
 }

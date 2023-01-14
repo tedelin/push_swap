@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:55:20 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:29 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:35:44 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	rra(t_stack **a, int display)
 		next_last = (*a);
 		while (last && last->next)
 			last = last->next;
-		add_front(a, last->content);
+		if (add_front(a, last->content) == 0)
+			return ;
 		while (next_last && next_last->next && next_last->next->next)
 			next_last = next_last->next;
 		next_last->next = NULL;
@@ -46,7 +47,8 @@ void	rrb(t_stack **b, int display)
 		next_last = (*b);
 		while (last && last->next)
 			last = last->next;
-		add_front(b, last->content);
+		if (add_front(b, last->content) == 0)
+			return ;
 		while (next_last && next_last->next && next_last->next->next)
 			next_last = next_last->next;
 		next_last->next = NULL;

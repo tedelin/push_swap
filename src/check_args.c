@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:51:58 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/12 17:04:15 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:49:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_arg_numb(char *s)
 {
 	int	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	if (s && (s[0] == '-' || s[0] == '+'))
 		i++;
@@ -63,7 +65,8 @@ void	sort_choose(t_stack **a, t_stack **b, int ac, char **av)
 {
 	int	size;
 
-	build_stack(a, ac, av);
+	if (build_stack(a, ac, av) == 0)
+		return ;
 	size = stack_size(a);
 	if (size == 5)
 		ft_five_sort(a, b);

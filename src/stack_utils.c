@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/12 16:59:44 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:44:43 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	stack_size(t_stack **stack)
 	return (size);
 }
 
-void	add_front(t_stack **stack, int content)
+int	add_front(t_stack **stack, int content)
 {
 	t_stack	*elt;
 
@@ -39,21 +39,28 @@ void	add_front(t_stack **stack, int content)
 	{
 		elt = malloc(sizeof(t_stack));
 		if (!elt)
-			return ;
+		{
+			free_stack(stack);
+			return (0);
+		}
 		elt->content = content;
 		elt->next = NULL;
 		(*stack) = elt;
-		return ;
+		return (1);
 	}
 	elt = malloc(sizeof(t_stack));
 	if (!elt)
-		return ;
+	{
+		free_stack(stack);
+		return (0);
+	}
 	elt->content = content;
 	elt->next = (*stack);
 	(*stack) = elt;
+	return (1);
 }
 
-void	add_back(t_stack **stack, int content)
+int	add_back(t_stack **stack, int content)
 {
 	t_stack	*elt;
 	t_stack	*last;
@@ -62,30 +69,36 @@ void	add_back(t_stack **stack, int content)
 	{
 		elt = malloc(sizeof(t_stack));
 		if (!elt)
-			return ;
+			return (free_stack(stack), 0);
 		elt->content = content;
 		elt->next = NULL;
 		(*stack) = elt;
-		return ;
+		return (1);
 	}
 	elt = malloc(sizeof(t_stack));
 	if (!elt)
-		return ;
+		return (free_stack(stack), 0);
 	elt->content = content;
 	elt->next = NULL;
 	last = (*stack);
 	while (last && last->next)
 		last = last->next;
 	last->next = elt;
+	return (1);
 }
 
-void	build_stack(t_stack **stack, int nb, char **av)
+int	build_stack(t_stack **stack, int nb, char **av)
 {
 	int	i;
 
 	i = 1;
 	while (i < nb)
-		add_back(stack, ft_atoi(av[i++]));
+	{
+		if (add_back(stack, ft_atoi(av[i])) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 void	free_stack(t_stack **stack)
