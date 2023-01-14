@@ -6,11 +6,12 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:11:58 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/10 19:38:29 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 16:24:11 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 int	is_sorted(t_stack **stack)
 {
@@ -19,13 +20,13 @@ int	is_sorted(t_stack **stack)
 
 	tab = build_tab(stack);
 	i = 0;
-	while (i < stack_size(stack) - 1)
+	while (tab != NULL && i < stack_size(stack) - 1)
 	{
 		if (tab[i] > tab[i + 1])
-			return (0);
+			return (free(tab), 0);
 		i++;
 	}
-	return (1);
+	return (free(tab), 1);
 }
 
 void	ft_three_sort(t_stack **stack)

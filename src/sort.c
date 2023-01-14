@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:30:08 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/11 19:22:15 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:40:33 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	final_sort(t_stack **stack, int size, int min_val)
 	}
 }
 
-void	first_sort(t_stack **a, t_stack **b)
+int	first_sort(t_stack **a, t_stack **b)
 {
 	int	*tab;
 	int	len;
@@ -76,22 +76,24 @@ void	first_sort(t_stack **a, t_stack **b)
 	int	lis_max;
 
 	tab = build_tab(a);
+	if (!tab)
+		return (0);
 	len = stack_size(a);
 	tab_lis = lis_tab(tab, len);
+	if (!tab_lis)
+		return (0);
 	lis = build_lis(tab, tab_lis, len);
+	if (!lis)
+		return (0);
 	lis_max = get_lis_max(tab_lis, len, 1);
-	while ((*a))
+	while (check_full_lis(a, lis, lis_max) == 0)
 	{
-		if (check_full_lis(a, lis, lis_max) == 1)
-			break ;
-		else if (check_lis(lis, lis_max, (*a)->content) == 0)
+		if (check_lis(lis, lis_max, (*a)->content) == 0)
 			pb(a, b);
 		else
 			ra(a, 1);
 	}
-	free(tab);
-	free(tab_lis);
-	free(lis);
+	return (free(tab), free(tab_lis), free(lis), 1);
 }
 
 void	main_sort(t_stack **a, t_stack **b)
@@ -102,8 +104,11 @@ void	main_sort(t_stack **a, t_stack **b)
 	while (stack_size(b) != 0)
 	{
 		best_move = best_to_push(a, b);
+		if (!best_move)
+			return ;
 		best_exec(a, b, best_move);
 		pa(a, b);
+		free(best_move);
 	}
 	final_sort(a, stack_size(a), get_min_stack(a));
 }

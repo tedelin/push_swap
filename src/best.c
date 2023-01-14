@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:07:25 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/11 19:06:13 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:05:56 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int	cost_a(t_stack **a, int elt)
 	i = 0;
 	j = stack_size(a) - 1;
 	tab = build_tab(a);
-	if (tab[j] < elt && elt < tab[0])
+	if (!tab)
 		return (0);
+	if (tab[j] < elt && elt < tab[0])
+		return (free(tab), 0);
 	while (i <= stack_size(a) / 2)
 	{
 		if (tab[i] < elt && elt < tab[i + 1])
@@ -65,6 +67,8 @@ int	*best_to_push(t_stack **a, t_stack **b)
 	t_stack	*cur;
 
 	best = malloc(sizeof(int) * 2);
+	if (!best)
+		return (NULL);
 	best[0] = cost_a(a, (*b)->content);
 	best[1] = cost_b(b, (*b)->content);
 	cur = (*b)->next;
@@ -104,6 +108,8 @@ void	smart_moves(t_stack **a, t_stack **b, int *tab)
 void	best_exec(t_stack **a, t_stack **b, int *tab)
 {
 	smart_moves(a, b, tab);
+	if (!tab)
+		return ;
 	while (tab[0] > 0)
 	{
 		ra(a, 1);

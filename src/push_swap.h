@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/13 16:52:21 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:39:25 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ long int	ft_atoi_long(char *nptr);
 /* Sorts functions */
 void		ft_three_sort(t_stack **stack);
 void		ft_five_sort(t_stack **a, t_stack **b);
-void		first_sort(t_stack **a, t_stack **b);
+int			first_sort(t_stack **a, t_stack **b);
 void		main_sort(t_stack **a, t_stack **b);
 int			cost_a(t_stack **a, int elt);
 int			cost_b(t_stack **a, int elt);

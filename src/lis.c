@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:33:22 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/11 19:21:49 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:21:39 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	*lis_tab(int *tab, int len)
 	int	*lis_tab;
 
 	lis_tab = init_lis(len);
+	if (!lis_tab || !tab)
+		return (free(tab), NULL);
 	i = 1;
 	while (i < len)
 	{
@@ -56,6 +58,8 @@ int	get_lis_max(int *tab, int len, int choice)
 	int	max;
 	int	ind;
 
+	if (!tab)
+		return (0);
 	i = 0;
 	max = tab[0];
 	ind = 0;
@@ -83,6 +87,8 @@ int	*build_lis(int *tab, int *lis_tab, int len)
 	i_max = get_lis_max(lis_tab, len, 0);
 	lis_max = get_lis_max(lis_tab, len, 1);
 	lis = (int *)malloc(sizeof(int) * lis_max);
+	if (!lis)
+		return (free(tab), free(lis_tab), NULL);
 	lis[lis_max - 1] = tab[i_max];
 	lis_max--;
 	i = i_max - 1;
