@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 18:25:47 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/16 15:28:48 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@
 
 void	pa(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
-	if (!(*b))
+	if (!*b)
 		return ;
-	if (add_front(a, (*b)->content))
-	{
-		tmp = (*b);
-		(*b) = (*b)->next;
-		free(tmp);
-		write(1, "pa\n", 3);
-	}
+	tmp_a = (*a);
+	tmp_b = (*b)->next;
+	(*a) = (*b);
+	(*a)->next = tmp_a;
+	(*b) = tmp_b;
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
-	if (!(*a))
+	if (!*a)
 		return ;
-	if (add_front(b, (*a)->content))
-	{
-		tmp = (*a);
-		(*a) = (*a)->next;
-		free(tmp);
-		write(1, "pb\n", 3);
-	}
+	tmp_b = (*b);
+	tmp_a = (*a)->next;
+	(*b) = (*a);
+	(*b)->next = tmp_b;
+	(*a) = tmp_a;
+	write(1, "pb\n", 3);
 }

@@ -6,13 +6,13 @@
 #    By: tedelin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 16:29:25 by tedelin           #+#    #+#              #
-#    Updated: 2023/01/14 17:51:37 by tedelin          ###   ########.fr        #
+#    Updated: 2023/01/16 17:02:15 by tedelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-CC = clang
-FLAGS = -Wall -Wextra -Werror
+CC = cc
+FLAGS = -Wall -Wextra -Werror -g
 HEADER_FILE = src/push_swap.h
 SRC_DIR = src
 OBJ_DIR = obj

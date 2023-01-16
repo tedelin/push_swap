@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:20:09 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:42 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/16 14:57:07 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ra(t_stack **a, int display)
 {
 	t_stack	*current;
 	int		tmp;
-
+	
+	if (!*a)
+		return ;
 	current = (*a);
 	tmp = current->content;
 	while (current->next)
@@ -36,6 +38,8 @@ void	rb(t_stack **b, int display)
 	t_stack	*current;
 	int		tmp;
 
+	if (!*b)
+		return ;
 	current = (*b);
 	tmp = current->content;
 	while (current->next)

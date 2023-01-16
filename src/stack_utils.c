@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:14:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 18:44:43 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/16 15:32:34 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,6 @@ int	stack_size(t_stack **stack)
 		current = current->next;
 	}
 	return (size);
-}
-
-int	add_front(t_stack **stack, int content)
-{
-	t_stack	*elt;
-
-	if (!(*stack))
-	{
-		elt = malloc(sizeof(t_stack));
-		if (!elt)
-		{
-			free_stack(stack);
-			return (0);
-		}
-		elt->content = content;
-		elt->next = NULL;
-		(*stack) = elt;
-		return (1);
-	}
-	elt = malloc(sizeof(t_stack));
-	if (!elt)
-	{
-		free_stack(stack);
-		return (0);
-	}
-	elt->content = content;
-	elt->next = (*stack);
-	(*stack) = elt;
-	return (1);
 }
 
 int	add_back(t_stack **stack, int content)

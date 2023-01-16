@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:55:20 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 18:35:44 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/16 14:48:27 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,40 @@
 
 void	rra(t_stack **a, int display)
 {
-	t_stack	*last;
-	t_stack	*next_last;
+	t_stack	*tmp_offset;
+	t_stack	*tmp_begin;
 
-	if (stack_size(a) >= 2)
-	{
-		last = (*a);
-		next_last = (*a);
-		while (last && last->next)
-			last = last->next;
-		if (add_front(a, last->content) == 0)
-			return ;
-		while (next_last && next_last->next && next_last->next->next)
-			next_last = next_last->next;
-		next_last->next = NULL;
-		free(last);
-	}
+	if (!*a || !(*a)->next)
+		return ;
+	tmp_offset = *a;
+	tmp_begin = *a;
+	while (tmp_offset->next != NULL)
+		tmp_offset = tmp_offset->next;
+	*a = tmp_offset;
+	(*a)->next = tmp_begin;
+	while (tmp_begin->next != *a)
+		tmp_begin = tmp_begin->next;
+	tmp_begin->next = NULL;
 	if (display == 1)
 		write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b, int display)
 {
-	t_stack	*last;
-	t_stack	*next_last;
+	t_stack	*tmp_offset;
+	t_stack	*tmp_begin;
 
-	if (stack_size(b) >= 2)
-	{
-		last = (*b);
-		next_last = (*b);
-		while (last && last->next)
-			last = last->next;
-		if (add_front(b, last->content) == 0)
-			return ;
-		while (next_last && next_last->next && next_last->next->next)
-			next_last = next_last->next;
-		next_last->next = NULL;
-		free(last);
-	}
+	if (!*b || !(*b)->next)
+		return ;
+	tmp_offset = *b;
+	tmp_begin = *b;
+	while (tmp_offset->next != NULL)
+	tmp_offset = tmp_offset->next;
+	*b = tmp_offset;
+	(*b)->next = tmp_begin;
+	while (tmp_begin->next != *b)
+		tmp_begin = tmp_begin->next;
+	tmp_begin->next = NULL;
 	if (display == 1)
 		write(1, "rrb\n", 4);
 }
