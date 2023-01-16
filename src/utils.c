@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:45:18 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/11 19:44:16 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:41:41 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	cost_max(t_stack **stack)
 	int		pos;
 	t_stack	*cur;
 
+	if (!*stack)
+		return (0);
 	cur = (*stack);
 	max = cur->content;
 	i = 0;
