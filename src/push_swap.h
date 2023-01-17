@@ -6,7 +6,7 @@
 /*   By: tedelin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:30:23 by tedelin           #+#    #+#             */
-/*   Updated: 2023/01/14 18:24:59 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/01/17 14:24:33 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,16 @@ void		rr(t_stack **a, t_stack **b);
 void		rra(t_stack **a, int display);
 void		rrb(t_stack **b, int display);
 void		rrr(t_stack **a, t_stack **b);
-
-/* Stack utils functions */
 int			stack_size(t_stack **stack);
 int			add_front(t_stack **stack, int content);
 int			add_back(t_stack **stack, int content);
 int			build_stack(t_stack **stack, int nb, char **av);
 void		free_stack(t_stack **stack);
-
-/* Utils functions */
 int			*build_tab(t_stack **stack);
 int			get_min_stack(t_stack **stack);
 int			cost_max(t_stack **stack);
 int			ft_abs(int nb);
 long int	ft_atoi_long(char *nptr);
-
-/* Sorts functions */
 void		ft_three_sort(t_stack **stack);
 void		ft_five_sort(t_stack **a, t_stack **b);
 int			first_sort(t_stack **a, t_stack **b);
@@ -55,13 +49,9 @@ int			cost_b(t_stack **a, int elt);
 int			*best_to_push(t_stack **a, t_stack **b);
 void		best_exec(t_stack **a, t_stack **b, int *tab);
 void		final_sort(t_stack **stack, int size, int min_val);
-
-/* Check arguments functions */
 int			check_arg_numb(char *s);
 int			check_for_double(char **av, int nb, int current, char *s);
 void		sort_choose(t_stack **a, t_stack **b, int ac, char **av);
-
-/* Lis functions */
 int			*init_lis(int len);
 int			*lis_tab(int *tab, int len);
 int			get_lis_max(int *tab, int len, int choice);
